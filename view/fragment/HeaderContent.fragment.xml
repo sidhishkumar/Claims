@@ -1,0 +1,40 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core">
+	<FlexBox wrap="Wrap" justifyContent="SpaceBetween">
+		<HBox>
+			<VBox class="sapUiSmallMarginEnd">
+				<Text text="Personnel Name:"/>
+				<Text text="Personnel Number:"/>
+				<Text text="Department:"/>
+				<Text text="Financial Year:"/>
+			</VBox>
+			<VBox>
+				<Text text="{to_Requester/EmployeeName}"/>
+				<Text text="{PersonnelNumber}"/>
+				<Text text="{to_Requester/OrgUnitDescription}"/>
+				<Text text="{FinancialYear}-{= parseInt(${FinancialYear}) + 1}"/>
+			</VBox>
+		</HBox>
+		<HBox>
+			<VBox class="sapUiSmallMarginEnd">
+				<Text text="Application Type:"/>
+				<Text text="Status:"/>
+			</VBox>
+			<VBox>
+				<Text text="{to_ReimCode/ReimCodeDescription}"/>
+				<Text text="{to_Status/Description}"/>
+			</VBox>
+		</HBox>
+		<HBox>
+			<VBox class="sapUiSmallMarginEnd">
+				<Text text="Eligibility Amount:"/>
+				<Text text="Total Amount:"/>
+				<Text text="Next Eligible Date:"/>
+			</VBox>
+			<VBox>
+				<Text text="₹ {MaxEntitlementAmount}"/>
+				<Text text="₹ {NetInvoiceAmount}"/>
+				<Text text="{path: 'NextEligibilityDate', type: 'sap.ui.model.type.Date'}"/>
+			</VBox>
+		</HBox>
+	</FlexBox>
+</core:FragmentDefinition>

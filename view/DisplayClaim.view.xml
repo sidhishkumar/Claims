@@ -1,0 +1,89 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:m="sap.m" xmlns:f="sap.f" xmlns="sap.uxap"
+	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:commons="sap.suite.ui.commons"
+	xmlns:form="sap.ui.layout.form" controllerName="com.pfcindia.apphrmanageclaim.controller.DisplayClaim"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<ObjectPageLayout showTitleInHeaderContent="true" showEditHeaderButton="true" editHeaderButtonPress="handleEditBtnPress"
+		upperCaseAnchorBar="false" alwaysShowContentHeader="true" headerContentPinned="false" showFooter="true">
+		<headerTitle>
+			<core:Fragment fragmentName="com.pfcindia.apphrmanageclaim.view.fragment.HeaderTitle" type="XML"/>
+		</headerTitle>
+		<headerContent>
+			<core:Fragment fragmentName="com.pfcindia.apphrmanageclaim.view.fragment.HeaderContent" type="XML"/>
+		</headerContent>
+		<sections>
+			<ObjectPageSection titleUppercase="false" title="Approval Status">
+				<subSections>
+					<ObjectPageSubSection titleUppercase="false" title="Approval Status">
+						<m:VBox>
+							<m:MessageStrip text="Your claim is currently pending for approval with {to_CurrentAgent/EmployeeName}" type="Information"
+								enableFormattedText="true" showIcon="true" visible="{= ${CurrentAgent} !== ''}"/>
+							<smartTable:SmartTable entitySet="ZHR_I_CLM_REMARK" smartFilterId="com.pfcindia.apphrmanageclaim.view.List.DynamicPage.smartFilterBar"
+								tableType="ResponsiveTable" header="History" showRowCount="true" enableAutoBinding="true" demandPopin="true" tableBindingPath="to_Remarks"
+								showTablePersonalisation="false" useExportToExcel="false">
+								<!-- layout data used to make the table growing but the filter bar fixed -->
+								<smartTable:layoutData>
+									<m:FlexItemData growFactor="1" baseSize="0%"/>
+								</smartTable:layoutData>
+							</smartTable:SmartTable>
+						</m:VBox>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection titleUppercase="false" title="Claim Details">
+				<subSections>
+					<ObjectPageSubSection titleUppercase="false" title="Claim Details">
+						<m:VBox>
+							<smartTable:SmartTable id="com.pfcindia.apphrmanageclaim.view.DisplayClaim.DynamicPage.smartTable" entitySet="ZHR_I_CLM_ITEMS"
+								smartFilterId="com.pfcindia.apphrmanageclaim.view.List.DynamicPage.smartFilterBar" tableType="ResponsiveTable" header="Invoices"
+								showRowCount="true" enableAutoBinding="true" class="sapUiMediumMarginBottom" demandPopin="true"
+								beforeRebindTable="onBeforeRebindVisitorTable" tableBindingPath="to_Items" showTablePersonalisation="false" useExportToExcel="false">
+								<!-- layout data used to make the table growing but the filter bar fixed -->
+								<smartTable:layoutData>
+									<m:FlexItemData growFactor="1" baseSize="0%"/>
+								</smartTable:layoutData>
+								<m:Table>
+									<m:ColumnListItem type="Navigation" press="onRowSelection"></m:ColumnListItem>
+								</m:Table>
+							</smartTable:SmartTable>
+							<m:VBox>
+								<m:CheckBox text="{note>/headerLine/hi} / {note>/headerLine/en}" selected="true" editable="false"/>
+								<m:VBox items="{note>/sublines/}">
+									<m:HBox>
+										<m:Text text="{note>no}" class="sapUiSmallMarginBeginEnd"/>
+										<m:VBox>
+											<m:Text text="{note>hi}"/>
+											<m:Text text="{note>en}"/>
+										</m:VBox>
+									</m:HBox>
+								</m:VBox>
+								<m:FlexBox justifyContent="SpaceBetween">
+									<m:Text/>
+									<form:SimpleForm editable="false" layout="ResponsiveGridLayout" labelSpanL="3" labelSpanM="3" labelSpanS="6" adjustLabelSpan="true"
+										emptySpanXL="0" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false">
+										<form:toolbar>
+											<m:Toolbar>
+												<m:Text text="{i18n>signature}"/>
+											</m:Toolbar>
+										</form:toolbar>
+										<form:content>
+											<m:Label text="{i18n>name}"/>
+											<m:Text text="{to_Requester/EmployeeName}"/>
+											<m:Label text="{i18n>designation}"/>
+											<m:Text text="{to_Requester/DesignationText}"/>
+											<m:Label text="{i18n>empno}"/>
+											<m:Text text="{PersonnelNumber}"/>
+											<m:Label text="{i18n>department}"/>
+											<m:Text text="{to_Requester/OrgUnitDescription}"/>
+											<m:Label text="{i18n>date}"/>
+											<m:Text text="{path: 'CreationDate', type:'sap.ui.model.type.Date'}"/>
+										</form:content>
+									</form:SimpleForm>
+								</m:FlexBox>
+							</m:VBox>
+						</m:VBox>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+		</sections>
+	</ObjectPageLayout>
+</mvc:View>

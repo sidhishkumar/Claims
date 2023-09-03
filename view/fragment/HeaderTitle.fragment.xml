@@ -1,0 +1,20 @@
+<core:FragmentDefinition xmlns="sap.uxap" xmlns:m="sap.m" xmlns:core="sap.ui.core">
+	<ObjectPageDynamicHeaderTitle>
+		<expandedHeading>
+			<m:HBox>
+				<m:Title text="Claim # {ClaimId}" wrapping="true"/>
+			</m:HBox>
+		</expandedHeading>
+		<snappedHeading>
+			<m:FlexBox fitContainer="true" alignItems="Center">
+				<m:Title text="Claim # {ClaimId}" wrapping="true"/>
+			</m:FlexBox>
+		</snappedHeading>
+		<expandedContent>
+			<m:Text text="Creation Date: {path: 'CreationDate', type: 'sap.ui.model.type.Date'}"/>
+		</expandedContent>
+		<snappedContent>
+			<m:Text text="Creation Date: {path: 'CreationDate', type: 'sap.ui.model.type.Date'}"/>
+		</snappedContent>
+	</ObjectPageDynamicHeaderTitle>
+</core:FragmentDefinition>

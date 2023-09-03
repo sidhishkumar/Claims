@@ -1,0 +1,149 @@
+<mvc:View xmlns="sap.uxap" xmlns:mvc="sap.ui.core.mvc" xmlns:m="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" xmlns:upload="sap.m.upload" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns:smartForm="sap.ui.comp.smartform" xmlns:smartField="sap.ui.comp.smartfield"
+	controllerName="com.pfcindia.apphrmanageclaim.controller.Invoice" xmlns:html="http://www.w3.org/1999/xhtml"
+	core:require="{ InvoiceDate: 'com/pfcindia/apphrmanageclaim/util/type/InvoiceDate', 
+	SupplierGSTIN: 'com/pfcindia/apphrmanageclaim/util/type/SupplierGSTIN', 
+	SupplierName: 'com/pfcindia/apphrmanageclaim/util/type/SupplierName',
+	InvoiceAmount: 'com/pfcindia/apphrmanageclaim/util/type/InvoiceAmount'}">
+	<ObjectPageLayout id="com.pfcindia.apphrmanageclaim.view.Invoice.objectPageLayout" showTitleInHeaderContent="true"
+		showEditHeaderButton="false" upperCaseAnchorBar="false" alwaysShowContentHeader="true" headerContentPinned="false" showFooter="true">
+		<headerTitle>
+			<ObjectPageDynamicHeaderTitle>
+				<expandedHeading>
+					<m:Title text="{= ${Item} ? 'Item # ' + ${Item} : 'New Item'}"/>
+				</expandedHeading>
+				<snappedHeading>
+					<m:Title text="{= ${Item} ? 'Item # ' + ${Item} : 'New Item'}"/>
+				</snappedHeading>
+			</ObjectPageDynamicHeaderTitle>
+		</headerTitle>
+		<sections>
+			<ObjectPageSection titleUppercase="false" title="Asset Details">
+				<subSections>
+					<ObjectPageSubSection>
+						<smartForm:SmartForm id="com.pfcindia.apphrmanageclaim.view.Invoice.ObjectPage.AssetForm" editable="true">
+							<smartForm:layout>
+								<smartForm:ColumnLayout columnsM="2" columnsL="2" columnsXL="2"/>
+							</smartForm:layout>
+							<smartForm:Group>
+								<smartForm:GroupElement>
+									<smartField:SmartField value="{Location}" change="onLocationChange"/>
+								</smartForm:GroupElement>
+								<smartForm:GroupElement>
+									<smartField:SmartField value="{Zmak}"/>
+								</smartForm:GroupElement>
+							</smartForm:Group>
+							<smartForm:Group>
+								<smartForm:GroupElement>
+									<smartField:SmartField value="{Sernr}"/>
+								</smartForm:GroupElement>
+								<smartForm:GroupElement>
+									<smartField:SmartField value="{Hsncode}"/>
+									<smartField:SmartField value="{HsncodeText}"/>
+								</smartForm:GroupElement>
+							</smartForm:Group>
+						</smartForm:SmartForm>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection titleUppercase="false" title="Supplier Information">
+				<subSections>
+					<ObjectPageSubSection titleUppercase="false">
+						<smartForm:SmartForm id="com.pfcindia.apphrmanageclaim.view.Invoice.ObjectPage.SupplierForm" editable="true">
+							<smartForm:layout>
+								<smartForm:ColumnLayout columnsM="2" columnsL="2" columnsXL="2"/>
+							</smartForm:layout>
+							<smartForm:Group>
+								<smartForm:GroupElement>
+									<smartField:SmartField value="{Head}"/>
+								</smartForm:GroupElement>
+								<smartForm:GroupElement>
+									<smartField:SmartField value="{Zgsti}" change="onLocationChange"/>
+								</smartForm:GroupElement>
+							</smartForm:Group>
+							<smartForm:Group>
+								<smartForm:GroupElement>
+									<smartField:SmartField value="{path:'Name',type:'SupplierName'}"/>
+								</smartForm:GroupElement>
+								<smartForm:GroupElement>
+									<smartField:SmartField value="{path:'Gstin', type:'SupplierGSTIN'}" mandatory="{= ${Location} === 'I'}"/>
+								</smartForm:GroupElement>
+							</smartForm:Group>
+						</smartForm:SmartForm>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection titleUppercase="false" title="Invoice Details">
+				<subSections>
+					<ObjectPageSubSection>
+						<smartForm:SmartForm id="com.pfcindia.apphrmanageclaim.view.Invoice.ObjectPage.InvoiceForm" editable="true">
+							<smartForm:layout>
+								<smartForm:ColumnLayout columnsM="2" columnsL="2" columnsXL="2"/>
+							</smartForm:layout>
+							<smartForm:Group>
+								<smartForm:GroupElement>
+									<smartField:SmartField value="{path: 'Bldat', type: 'InvoiceDate'}"/>
+								</smartForm:GroupElement>
+								<smartForm:GroupElement>
+									<smartField:SmartField value="{Xblnr}"/>
+								</smartForm:GroupElement>
+								<smartForm:GroupElement>
+									<smartField:SmartField value="{Zpfc}"/>
+								</smartForm:GroupElement>
+								<smartForm:GroupElement>
+									<smartField:SmartField value="{Taxcode}" change="onAmountDetermination" visible="{= ${Location} === 'I' &amp;&amp; ${Zgsti} === 'R'}"/>
+									<smartField:SmartField value="{TaxcodeText}" visible="{= ${Location} === 'I' &amp;&amp; ${Zgsti} === 'R'}"/>
+								</smartForm:GroupElement>
+							</smartForm:Group>
+							<smartForm:Group>
+								<smartForm:GroupElement>
+									<smartField:SmartField value="{path: 'Invoiceamt', type: 'InvoiceAmount', constraints:{ scale: 2 }}" change="onAmountDetermination"/>
+								</smartForm:GroupElement>
+								<smartForm:GroupElement>
+									<smartField:SmartField value="{Cgst}" enabled="false"/>
+								</smartForm:GroupElement>
+								<smartForm:GroupElement>
+									<smartField:SmartField value="{Sgst}" enabled="false"/>
+								</smartForm:GroupElement>
+								<smartForm:GroupElement>
+									<smartField:SmartField value="{Igst}" enabled="false"/>
+								</smartForm:GroupElement>
+								<smartForm:GroupElement>
+									<smartField:SmartField value="{Totamt}" enabled="false"/>
+								</smartForm:GroupElement>
+							</smartForm:Group>
+						</smartForm:SmartForm>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection titleUppercase="false" title="Attachment">
+				<subSections>
+					<ObjectPageSubSection>
+						<upload:UploadSet id="com.pfcindia.apphrmanageclaim.view.Invoice.uploader" showIcons="true" uploadEnabled="true"
+							uploadUrl="/sap/opu/odata/SAP/ZHR_CLAIM_SRV/AttachmentSet/" instantUpload="false"
+							terminationEnabled="false" beforeItemAdded="onBeforeAttachmentAdded" afterItemAdded="onAfterAttachmentAdded" afterItemRemoved="onAfterAttachmentRemoved"
+							beforeUploadStarts="onBeforeUploadStarts" items="{path: 'ToAttachment', templateShareable: false}" uploadCompleted="onUploadCompleted">
+							<upload:items>
+								<upload:UploadSetItem fileName="{Name}" mediaType="{Mimetype}" url="{Url}" visibleEdit="true" visibleRemove="true">
+									<upload:attributes>
+										<m:ObjectAttribute title="Uploaded On" text="{path:'Credate',type:'sap.ui.model.type.Date'}" active="false"/>
+									</upload:attributes>
+								</upload:UploadSetItem>
+							</upload:items>
+						</upload:UploadSet>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+		</sections>
+		<footer>
+			<m:OverflowToolbar>
+				<m:Button id="com.pfcindia.apphrmanageclaim.view.Invoice.messageButton" icon="sap-icon://alert" text="{= ${message>/}.length }"
+					enabled="{= ${message>/}.length > 0 }" type="Reject" press="onMessagePopover"/>
+				<m:ToolbarSpacer/>
+				<m:Button tooltip="Save" text="Save" class="sapUiTinyMarginEnd" press="onSave" type="Emphasized"/>
+				<m:Button tooltip="Cancel" text="Cancel" class="sapUiTinyMarginEnd" type="Transparent" press="onCancel"/>
+			</m:OverflowToolbar>
+		</footer>
+	</ObjectPageLayout>
+</mvc:View>

@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+	<edmx:Reference
+		Uri="http://localhost:60941/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value"
+		xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"><edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/></edmx:Reference>
+	<edmx:Reference
+		Uri="http://localhost:60941/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value"
+		xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"><edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/></edmx:Reference>
+	<edmx:Reference
+		Uri="http://localhost:60941/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value"
+		xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"><edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/></edmx:Reference>
+	<edmx:Reference
+		Uri="http://localhost:60941/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='')/$value"
+		xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"><edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/><edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="CodeList"/></edmx:Reference>
+	<edmx:Reference
+		Uri="http://localhost:60941/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value"
+		xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"><edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/></edmx:Reference>
+	<edmx:Reference
+		Uri="http://localhost:60941/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value"
+		xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"><edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/></edmx:Reference>
+	<edmx:Reference
+		Uri="http://localhost:60941/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value"
+		xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"><edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/></edmx:Reference>
+	<edmx:Reference
+		Uri="http://localhost:60941/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value"
+		xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"><edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/></edmx:Reference>
+	<edmx:Reference
+		Uri="http://localhost:60941/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value"
+		xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"><edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/></edmx:Reference>
+	<edmx:Reference
+		Uri="http://localhost:60941/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value"
+		xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"><edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/></edmx:Reference>
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema Namespace="ZHR_CLAIM_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm"><Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+			<EntityType Name="ZHR_C_CLAIMType" sap:label="Manage Claim" sap:content-version="1">
+				<Key><PropertyRef Name="ClaimId"/></Key><Property Name="ClaimId" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Claim ID"
+					sap:value-list="standard"/><Property Name="PersonnelNumber" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Personnel Number"/><Property Name="ReimbursementCategory" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Reim Category"
+					sap:quickinfo="Reimbursement Category" sap:value-list="fixed-values"/><Property Name="ReimbursementCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Reimbursement Code"
+					sap:value-list="fixed-values"/><Property Name="Maintenance" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Maintenance"/><Property Name="MaxEntitlementAmount" Type="Edm.Decimal" Precision="24" Scale="3" sap:label="Max Entitlement Amou"
+					sap:quickinfo="Max Entitlement Amount"/><Property Name="CostCenter" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Cost Center"/><Property Name="GrossAmount" Type="Edm.Decimal" Precision="24" Scale="3" sap:label="Gross Amount"/><Property Name="TotalTaxAmount" Type="Edm.Decimal" Precision="24" Scale="3" sap:label="Total Tax amount"/><Property Name="NetInvoiceAmount" Type="Edm.Decimal" Precision="24" Scale="3" sap:label="Net Amount(Invoice )"
+					sap:quickinfo="Net Amount(Invoice amount)"/><Property Name="Currency" Type="Edm.String" MaxLength="5" sap:label="Currency" sap:quickinfo="Currency Key" sap:semantics="currency-code"/><Property Name="ApprovedAmount" Type="Edm.Decimal" Precision="24" Scale="3" sap:label="Approved Amount"/><Property Name="Status" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:text="Status_Text" sap:label="Status"
+					sap:value-list="fixed-values"/><Property Name="Status_Text" Type="Edm.String" MaxLength="40" sap:label="Description" sap:creatable="false" sap:updatable="false"/><Property Name="CriticalityType" Type="Edm.Byte"/><Property Name="Requester" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Requester" sap:value-list="standard"/><Property Name="CurrentAgent" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Current Agent"/><Property Name="NextAgent" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Next Agent"/><Property Name="CreationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:filter-restriction="interval"
+					sap:label="Creation Date" sap:quickinfo="Date on which the record was created"/><Property Name="LastApprover" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Last Approver"/><Property Name="CreationUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Changed by"
+					sap:quickinfo="Name of person who changed object"/><Property Name="LastChange" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Changed On"
+					sap:quickinfo="Date of Last Change"/><Property Name="FinancialYear" Type="Edm.String" MaxLength="9" sap:display-format="UpperCase" sap:label="Financial year"/><Property Name="NextEligibilityDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Next Eligibility Dat"
+					sap:quickinfo="Next Eligibility Date"/><Property Name="ValidationLevel" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:label="Validation level"/><NavigationProperty Name="to_Category" Relationship="ZHR_CLAIM_SRV.assoc_FBACA14139B6F30ACA713DD24C4F04D5"
+					FromRole="FromRole_assoc_FBACA14139B6F30ACA713DD24C4F04D5" ToRole="ToRole_assoc_FBACA14139B6F30ACA713DD24C4F04D5"/><NavigationProperty Name="to_CurrentAgent" Relationship="ZHR_CLAIM_SRV.assoc_FDF72E962F2A85A023931EFBF52F6AFC"
+					FromRole="FromRole_assoc_FDF72E962F2A85A023931EFBF52F6AFC" ToRole="ToRole_assoc_FDF72E962F2A85A023931EFBF52F6AFC"/><NavigationProperty Name="to_Items" Relationship="ZHR_CLAIM_SRV.assoc_B24970C88A2D7FEF1554AF50089FC722"
+					FromRole="FromRole_assoc_B24970C88A2D7FEF1554AF50089FC722" ToRole="ToRole_assoc_B24970C88A2D7FEF1554AF50089FC722"/><NavigationProperty Name="to_NextAgent" Relationship="ZHR_CLAIM_SRV.assoc_AFACDAC7FD724F6597B77A51EB8803C9"
+					FromRole="FromRole_assoc_AFACDAC7FD724F6597B77A51EB8803C9" ToRole="ToRole_assoc_AFACDAC7FD724F6597B77A51EB8803C9"/><NavigationProperty Name="to_ReimCode" Relationship="ZHR_CLAIM_SRV.assoc_7221AA154D628529C233F1F116C9BE6F"
+					FromRole="FromRole_assoc_7221AA154D628529C233F1F116C9BE6F" ToRole="ToRole_assoc_7221AA154D628529C233F1F116C9BE6F"/><NavigationProperty Name="to_Remarks" Relationship="ZHR_CLAIM_SRV.assoc_89B261BE1EED7E89273A66C3A4A598D8"
+					FromRole="FromRole_assoc_89B261BE1EED7E89273A66C3A4A598D8" ToRole="ToRole_assoc_89B261BE1EED7E89273A66C3A4A598D8"/><NavigationProperty Name="to_Requester" Relationship="ZHR_CLAIM_SRV.assoc_2EDD7243756A70E6526B13C6A1EB8747"
+					FromRole="FromRole_assoc_2EDD7243756A70E6526B13C6A1EB8747" ToRole="ToRole_assoc_2EDD7243756A70E6526B13C6A1EB8747"/><NavigationProperty Name="to_Status" Relationship="ZHR_CLAIM_SRV.assoc_B62CE180B72E40056156B2850FAE3B06"
+					FromRole="FromRole_assoc_B62CE180B72E40056156B2850FAE3B06" ToRole="ToRole_assoc_B62CE180B72E40056156B2850FAE3B06"/></EntityType>
+			<EntityType Name="ZHR_I_CATEGORY_VHType" sap:label="Value Help for Claim Category" sap:content-version="1">
+				<Key><PropertyRef Name="ReimbursementCategory"/><PropertyRef Name="language"/></Key><Property Name="ReimbursementCategory" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase"
+					sap:text="Description" sap:label="Reim Category" sap:quickinfo="Reimbursement Category"/><Property Name="language" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Language Key"/><Property Name="Description" Type="Edm.String" MaxLength="40" sap:label="Description"/></EntityType>
+			<EntityType Name="ZHR_I_CLM_ATTACHMENTType" sap:label="Reimbursement Attachment" sap:content-version="1">
+				<Key><PropertyRef Name="ClaimId"/><PropertyRef Name="Item"/><PropertyRef Name="Counter"/></Key><Property Name="ClaimId" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Claim ID"/><Property Name="Item" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Line Item for Claim"/><Property Name="Counter" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Counter"/><Property Name="AttachmentName" Type="Edm.String" MaxLength="80" sap:label="Name"/><Property Name="Mimetype" Type="Edm.String" MaxLength="100" sap:display-format="UpperCase" sap:label="Character 100" sap:heading=""/><Property Name="Value" Type="Edm.Binary" sap:label="Binary String" sap:quickinfo="XString"/><Property Name="CredationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Date"
+					sap:quickinfo="Field of type DATS"/><Property Name="CreationTime" Type="Edm.Time" Precision="0" sap:label="Time" sap:quickinfo="System Time"/></EntityType>
+			<EntityType Name="ZHR_I_CLM_EMP_PERSONNELType" sap:label="Employee Personel Master" sap:content-version="1">
+				<Key><PropertyRef Name="PersonnelNumber"/></Key><Property Name="PersonnelNumber" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative"
+					sap:label="Personnel Number"/><Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code"/><Property Name="PersonnelArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Personnel area"
+					sap:quickinfo="Personnel Area"/><Property Name="EmployeeGroup" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Employee group"
+					sap:quickinfo="Employee Group"/><Property Name="EmployeeSubgroup" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Employee subgroup"
+					sap:quickinfo="Employee Subgroup"/><Property Name="PersonnelSubarea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Personnel subarea"
+					sap:quickinfo="Personnel Subarea"/><Property Name="CostCenter" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Cost Center"/><Property Name="OrganizationalUnit" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Organizational unit"
+					sap:quickinfo="Organizational Unit"/><Property Name="EmployeeName" Type="Edm.String" MaxLength="40" sap:label="Employee/app.name"
+					sap:quickinfo="Formatted Name of Employee or Applicant"/><Property Name="EmployeeGrade" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Employee Grade"/><Property Name="EmployeeLevel" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Emp Level"
+					sap:quickinfo="Employee level"/><Property Name="UserId" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="System ID"
+					sap:quickinfo="Communication Identification/Number"/><Property Name="FiscalYear" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="Fiscal Year"/><Property Name="OrgUnitDescription" Type="Edm.String" MaxLength="25" sap:label="Org.Unit Short Text"
+					sap:quickinfo="Short Text of Organizational Unit"/><NavigationProperty Name="to_EmpMatrix" Relationship="ZHR_CLAIM_SRV.assoc_059B2A0A5788ADA155713D6404A9EF1F"
+					FromRole="FromRole_assoc_059B2A0A5788ADA155713D6404A9EF1F" ToRole="ToRole_assoc_059B2A0A5788ADA155713D6404A9EF1F"/></EntityType>
+			<EntityType Name="ZHR_I_CLM_ITEMSType" sap:label="Claim Items" sap:content-version="1">
+				<Key><PropertyRef Name="ClaimId"/><PropertyRef Name="Item"/></Key><Property Name="ClaimId" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Claim ID"/><Property Name="Item" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Line Item for Claim"/><Property Name="Head" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Reimb. Sub Code"
+					sap:quickinfo="Reimbursement Sub Code"/><Property Name="SupplierName" Type="Edm.String" MaxLength="35" sap:label="Supplier Name"/><Property Name="SupplierGSTStatus" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Supplier GST Status"/><Property Name="SupplierGstin" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="Supplier GSTIN"/><Property Name="InvoiceNumber" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Invoice Number"/><Property Name="DeviceType" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Device Type"
+					sap:quickinfo="Device type"/><Property Name="AssetName" Type="Edm.String" MaxLength="50" sap:display-format="UpperCase" sap:label="Asset Name"/><Property Name="SerialNumber" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Serial Number"/><Property Name="HsnCode" Type="Edm.String" MaxLength="16" sap:display-format="UpperCase" sap:label="HSN Code"/><Property Name="InvoiceDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Invoice date"/><Property Name="MakeModel" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="Make &amp; Model"/><Property Name="PfcGstinType" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="PFC GSTIN TYPE"/><Property Name="InvoiceAmount" Type="Edm.Decimal" Precision="24" Scale="3" sap:label="Invoice Amount"/><Property Name="CurrencyKey" Type="Edm.String" MaxLength="5" sap:label="Currency" sap:quickinfo="Currency Key" sap:semantics="currency-code"/><Property Name="ApprovedAmount" Type="Edm.Decimal" Precision="24" Scale="3" sap:label="Approved Amount"/><Property Name="GstRate" Type="Edm.Decimal" Precision="5" Scale="2" sap:label="Gst Rate"/><Property Name="Cgst" Type="Edm.Decimal" Precision="24" Scale="3" sap:label="CGST"/><Property Name="Sgst" Type="Edm.Decimal" Precision="24" Scale="3" sap:label="SGST"/><Property Name="Igst" Type="Edm.Decimal" Precision="24" Scale="3" sap:label="IGST"/><Property Name="Location" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Location"/><Property Name="TotalAmount" Type="Edm.Decimal" Precision="24" Scale="3" sap:label="Total Amount"/><Property Name="CreatedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="User Name"/><NavigationProperty Name="to_ClaimAttachment" Relationship="ZHR_CLAIM_SRV.assoc_72498A79E86473D7662C6979F0CD9B5B"
+					FromRole="FromRole_assoc_72498A79E86473D7662C6979F0CD9B5B" ToRole="ToRole_assoc_72498A79E86473D7662C6979F0CD9B5B"/><NavigationProperty Name="to_Header" Relationship="ZHR_CLAIM_SRV.assoc_5B68AC6FBC546A1C608CE4D71B8EBB22"
+					FromRole="FromRole_assoc_5B68AC6FBC546A1C608CE4D71B8EBB22" ToRole="ToRole_assoc_5B68AC6FBC546A1C608CE4D71B8EBB22"/></EntityType>
+			<EntityType Name="ZHR_I_CLM_MASTERType" sap:label="Claim Master Data" sap:content-version="1">
+				<Key><PropertyRef Name="ClaimId"/></Key><Property Name="ClaimId" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Claim ID"/><Property Name="PersonnelNumber" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Personnel Number"/><Property Name="ReimbursementCategory" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Reim Category"
+					sap:quickinfo="Reimbursement Category"/><Property Name="ReimbursementCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Reimbursement Code"/><Property Name="Maintenance" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Maintenance"/><Property Name="MaxEntitlementAmount" Type="Edm.Decimal" Precision="24" Scale="3" sap:label="Max Entitlement Amou"
+					sap:quickinfo="Max Entitlement Amount"/><Property Name="CostCenter" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Cost Center"/><Property Name="GrossAmount" Type="Edm.Decimal" Precision="24" Scale="3" sap:label="Gross Amount"/><Property Name="TotalTaxAmount" Type="Edm.Decimal" Precision="24" Scale="3" sap:label="Total Tax amount"/><Property Name="NetInvoiceAmount" Type="Edm.Decimal" Precision="24" Scale="3" sap:label="Net Amount(Invoice )"
+					sap:quickinfo="Net Amount(Invoice amount)"/><Property Name="Currency" Type="Edm.String" MaxLength="5" sap:label="Currency" sap:quickinfo="Currency Key" sap:semantics="currency-code"/><Property Name="ApprovedAmount" Type="Edm.Decimal" Precision="24" Scale="3" sap:label="Approved Amount"/><Property Name="Status" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:text="Status_Text" sap:label="Status"/><Property Name="Status_Text" Type="Edm.String" MaxLength="40" sap:label="Description" sap:creatable="false" sap:updatable="false"/><Property Name="CriticalityType" Type="Edm.Byte"/><Property Name="Requester" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Requester"/><Property Name="CurrentAgent" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Current Agent"/><Property Name="NextAgent" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Next Agent"/><Property Name="CreationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created on"
+					sap:quickinfo="Date on which the record was created"/><Property Name="LastApprover" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Last Approver"/><Property Name="CreationUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Changed by"
+					sap:quickinfo="Name of person who changed object"/><Property Name="LastChange" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Changed On"
+					sap:quickinfo="Date of Last Change"/><Property Name="FinancialYear" Type="Edm.String" MaxLength="9" sap:display-format="UpperCase" sap:label="Financial year"/><Property Name="NextEligibilityDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Next Eligibility Dat"
+					sap:quickinfo="Next Eligibility Date"/><Property Name="ValidationLevel" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:label="Validation level"/></EntityType>
+			<EntityType Name="ZHR_I_CLM_PERSONNEL_MASTERType" sap:label="Employee Clam Personel Data" sap:content-version="1">
+				<Key><PropertyRef Name="PersonnelNumber"/></Key><Property Name="PersonnelNumber" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative"
+					sap:label="Personnel Number"/><Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code"/><Property Name="PersonnelArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Personnel area"
+					sap:quickinfo="Personnel Area"/><Property Name="EmployeeGroup" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Employee group"
+					sap:quickinfo="Employee Group"/><Property Name="EmployeeSubgroup" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Employee subgroup"
+					sap:quickinfo="Employee Subgroup"/><Property Name="PersonnelSubarea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Personnel subarea"
+					sap:quickinfo="Personnel Subarea"/><Property Name="CostCenter" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Cost Center"/><Property Name="OrganizationalUnit" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Organizational unit"
+					sap:quickinfo="Organizational Unit"/><Property Name="EmployeeName" Type="Edm.String" MaxLength="40" sap:label="Employee/app.name"
+					sap:quickinfo="Formatted Name of Employee or Applicant"/><Property Name="EmployeeGrade" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Employee Grade"/><Property Name="EmployeeLevel" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Emp Level"
+					sap:quickinfo="Employee level"/><Property Name="UserId" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="System ID"
+					sap:quickinfo="Communication Identification/Number"/><Property Name="FiscalYear" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="Fiscal Year"/><Property Name="OrgUnitDescription" Type="Edm.String" MaxLength="25" sap:label="Org.Unit Short Text"
+					sap:quickinfo="Short Text of Organizational Unit"/></EntityType>
+			<EntityType Name="ZHR_I_CLM_REIMCODE_VHType" sap:label="HR Claim Reiemburse code Value Help" sap:value-list="true" sap:content-version="1">
+				<Key><PropertyRef Name="ReimbursementCategory"/><PropertyRef Name="ReimbursementCode"/></Key><Property Name="ReimbursementCategory" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase"
+					sap:label="Reim Category" sap:quickinfo="Reimbursement Category"/><Property Name="ReimbursementCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase"
+					sap:text="ReimCodeDescription" sap:label="Reimbursement Code"/><Property Name="language" Type="Edm.String" MaxLength="2" sap:label="Language Key"/><Property Name="ReimCodeDescription" Type="Edm.String" MaxLength="50" sap:label="Reimb. code desc"
+					sap:quickinfo="Reimbursement code description"/></EntityType>
+			<EntityType Name="ZHR_I_CLM_REIM_CODEType" sap:label="Reimbursement Code" sap:content-version="1">
+				<Key><PropertyRef Name="ReimbursementCategory"/><PropertyRef Name="ReimbursementCode"/></Key><Property Name="ReimbursementCategory" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase"
+					sap:label="Reim Category" sap:quickinfo="Reimbursement Category"/><Property Name="ReimbursementCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase"
+					sap:label="Reimbursement Code"/><Property Name="ReimCodeDescription" Type="Edm.String" MaxLength="50" sap:label="Reimb. code desc"
+					sap:quickinfo="Reimbursement code description"/></EntityType>
+			<EntityType Name="ZHR_I_CLM_REMARKType" sap:label="Reimbursement Process Remark" sap:content-version="1">
+				<Key><PropertyRef Name="ClaimId"/><PropertyRef Name="Counter"/></Key><Property Name="ClaimId" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Claim ID"/><Property Name="Counter" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Sr.No."
+					sap:quickinfo="Counter"/><Property Name="CreatedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Approver Name"
+					sap:quickinfo="User Name"/><Property Name="CredationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Date"
+					sap:quickinfo="Field of type DATS"/><Property Name="CreationTime" Type="Edm.Time" Precision="0" sap:label="Time" sap:quickinfo="System Time"/><Property Name="Status" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Status"/><Property Name="Type" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="decision type"/><Property Name="Remark" Type="Edm.String"/></EntityType>
+			<EntityType Name="ZHR_I_CLM_STATUSType" sap:label="Claim Status" sap:content-version="1">
+				<Key><PropertyRef Name="language"/><PropertyRef Name="Status"/></Key><Property Name="language" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Language Key"/><Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:text="Description"
+					sap:label="Status"/><Property Name="Description" Type="Edm.String" MaxLength="40" sap:label="Description"/></EntityType>
+			<EntityType Name="ZHR_I_EMP_MATRIXType" sap:label="Employee Eligibilty Matrix data" sap:content-version="1">
+				<Key><PropertyRef Name="ReimbursementCategory"/><PropertyRef Name="ReimbursementCode"/><PropertyRef Name="EmployeeGroup"/><PropertyRef Name="EmployeeSubgroup"/></Key><Property Name="ReimbursementCategory" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase"
+					sap:label="Reim Category" sap:quickinfo="Reimbursement Category"/><Property Name="ReimbursementCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase"
+					sap:label="Reimbursement Code"/><Property Name="EmployeeGroup" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:label="Employee Group"/><Property Name="EmployeeSubgroup" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase"
+					sap:label="Employee subgroup" sap:quickinfo="Employee Subgroup"/><Property Name="ReimCodeDescription" Type="Edm.String" MaxLength="50" sap:label="Reimb. code desc"
+					sap:quickinfo="Reimbursement code description"/><Property Name="Description" Type="Edm.String" MaxLength="40" sap:label="Description"/><Property Name="MaxEntitlementAmount" Type="Edm.Decimal" Precision="24" Scale="3" sap:label="Max Entitlement Amou"
+					sap:quickinfo="Max Entitlement Amount"/><Property Name="MaximumNoOfClaim" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:label="Maximum Claims"/></EntityType>
+			<Association Name="assoc_72498A79E86473D7662C6979F0CD9B5B" sap:content-version="1"><End Type="ZHR_CLAIM_SRV.ZHR_I_CLM_ITEMSType" Multiplicity="1" Role="FromRole_assoc_72498A79E86473D7662C6979F0CD9B5B"/><End Type="ZHR_CLAIM_SRV.ZHR_I_CLM_ATTACHMENTType" Multiplicity="*" Role="ToRole_assoc_72498A79E86473D7662C6979F0CD9B5B"/></Association>
+			<Association Name="assoc_5B68AC6FBC546A1C608CE4D71B8EBB22" sap:content-version="1"><End Type="ZHR_CLAIM_SRV.ZHR_I_CLM_ITEMSType" Multiplicity="1" Role="FromRole_assoc_5B68AC6FBC546A1C608CE4D71B8EBB22"/><End Type="ZHR_CLAIM_SRV.ZHR_I_CLM_MASTERType" Multiplicity="0..1" Role="ToRole_assoc_5B68AC6FBC546A1C608CE4D71B8EBB22"/></Association>
+			<Association Name="assoc_FDF72E962F2A85A023931EFBF52F6AFC" sap:content-version="1"><End Type="ZHR_CLAIM_SRV.ZHR_C_CLAIMType" Multiplicity="1" Role="FromRole_assoc_FDF72E962F2A85A023931EFBF52F6AFC"/><End Type="ZHR_CLAIM_SRV.ZHR_I_CLM_PERSONNEL_MASTERType" Multiplicity="0..1" Role="ToRole_assoc_FDF72E962F2A85A023931EFBF52F6AFC"/></Association>
+			<Association Name="assoc_B24970C88A2D7FEF1554AF50089FC722" sap:content-version="1"><End Type="ZHR_CLAIM_SRV.ZHR_C_CLAIMType" Multiplicity="1" Role="FromRole_assoc_B24970C88A2D7FEF1554AF50089FC722"/><End Type="ZHR_CLAIM_SRV.ZHR_I_CLM_ITEMSType" Multiplicity="*" Role="ToRole_assoc_B24970C88A2D7FEF1554AF50089FC722"/></Association>
+			<Association Name="assoc_AFACDAC7FD724F6597B77A51EB8803C9" sap:content-version="1"><End Type="ZHR_CLAIM_SRV.ZHR_C_CLAIMType" Multiplicity="1" Role="FromRole_assoc_AFACDAC7FD724F6597B77A51EB8803C9"/><End Type="ZHR_CLAIM_SRV.ZHR_I_CLM_PERSONNEL_MASTERType" Multiplicity="0..1" Role="ToRole_assoc_AFACDAC7FD724F6597B77A51EB8803C9"/></Association>
+			<Association Name="assoc_7221AA154D628529C233F1F116C9BE6F" sap:content-version="1"><End Type="ZHR_CLAIM_SRV.ZHR_C_CLAIMType" Multiplicity="1" Role="FromRole_assoc_7221AA154D628529C233F1F116C9BE6F"/><End Type="ZHR_CLAIM_SRV.ZHR_I_CLM_REIM_CODEType" Multiplicity="0..1" Role="ToRole_assoc_7221AA154D628529C233F1F116C9BE6F"/></Association>
+			<Association Name="assoc_89B261BE1EED7E89273A66C3A4A598D8" sap:content-version="1"><End Type="ZHR_CLAIM_SRV.ZHR_C_CLAIMType" Multiplicity="1" Role="FromRole_assoc_89B261BE1EED7E89273A66C3A4A598D8"/><End Type="ZHR_CLAIM_SRV.ZHR_I_CLM_REMARKType" Multiplicity="*" Role="ToRole_assoc_89B261BE1EED7E89273A66C3A4A598D8"/></Association>
+			<Association Name="assoc_2EDD7243756A70E6526B13C6A1EB8747" sap:content-version="1"><End Type="ZHR_CLAIM_SRV.ZHR_C_CLAIMType" Multiplicity="1" Role="FromRole_assoc_2EDD7243756A70E6526B13C6A1EB8747"/><End Type="ZHR_CLAIM_SRV.ZHR_I_CLM_PERSONNEL_MASTERType" Multiplicity="0..1" Role="ToRole_assoc_2EDD7243756A70E6526B13C6A1EB8747"/></Association>
+			<Association Name="assoc_B62CE180B72E40056156B2850FAE3B06" sap:content-version="1"><End Type="ZHR_CLAIM_SRV.ZHR_C_CLAIMType" Multiplicity="1" Role="FromRole_assoc_B62CE180B72E40056156B2850FAE3B06"/><End Type="ZHR_CLAIM_SRV.ZHR_I_CLM_STATUSType" Multiplicity="0..1" Role="ToRole_assoc_B62CE180B72E40056156B2850FAE3B06"/></Association>
+			<Association Name="assoc_FBACA14139B6F30ACA713DD24C4F04D5" sap:content-version="1"><End Type="ZHR_CLAIM_SRV.ZHR_C_CLAIMType" Multiplicity="1" Role="FromRole_assoc_FBACA14139B6F30ACA713DD24C4F04D5"/><End Type="ZHR_CLAIM_SRV.ZHR_I_CATEGORY_VHType" Multiplicity="0..1" Role="ToRole_assoc_FBACA14139B6F30ACA713DD24C4F04D5"/></Association>
+			<Association Name="assoc_059B2A0A5788ADA155713D6404A9EF1F" sap:content-version="1"><End Type="ZHR_CLAIM_SRV.ZHR_I_CLM_EMP_PERSONNELType" Multiplicity="1" Role="FromRole_assoc_059B2A0A5788ADA155713D6404A9EF1F"/><End Type="ZHR_CLAIM_SRV.ZHR_I_EMP_MATRIXType" Multiplicity="*" Role="ToRole_assoc_059B2A0A5788ADA155713D6404A9EF1F"/></Association>
+			<EntityContainer Name="ZHR_CLAIM_SRV_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true"
+				sap:supported-formats="atom json xlsx"><EntitySet Name="ZHR_C_CLAIM" EntityType="ZHR_CLAIM_SRV.ZHR_C_CLAIMType" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:searchable="true" sap:content-version="1"/><EntitySet Name="ZHR_I_CATEGORY_VH" EntityType="ZHR_CLAIM_SRV.ZHR_I_CATEGORY_VHType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:content-version="1"/><EntitySet Name="ZHR_I_CLM_ATTACHMENT" EntityType="ZHR_CLAIM_SRV.ZHR_I_CLM_ATTACHMENTType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:content-version="1"/><EntitySet Name="ZHR_I_CLM_EMP_PERSONNEL" EntityType="ZHR_CLAIM_SRV.ZHR_I_CLM_EMP_PERSONNELType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:content-version="1"/><EntitySet Name="ZHR_I_CLM_ITEMS" EntityType="ZHR_CLAIM_SRV.ZHR_I_CLM_ITEMSType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:content-version="1"/><EntitySet Name="ZHR_I_CLM_MASTER" EntityType="ZHR_CLAIM_SRV.ZHR_I_CLM_MASTERType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:content-version="1"/><EntitySet Name="ZHR_I_CLM_PERSONNEL_MASTER" EntityType="ZHR_CLAIM_SRV.ZHR_I_CLM_PERSONNEL_MASTERType" sap:creatable="false"
+				sap:updatable="false" sap:deletable="false" sap:content-version="1"/><EntitySet Name="ZHR_I_CLM_REIMCODE_VH" EntityType="ZHR_CLAIM_SRV.ZHR_I_CLM_REIMCODE_VHType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:content-version="1"/><EntitySet Name="ZHR_I_CLM_REIM_CODE" EntityType="ZHR_CLAIM_SRV.ZHR_I_CLM_REIM_CODEType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:content-version="1"/><EntitySet Name="ZHR_I_CLM_REMARK" EntityType="ZHR_CLAIM_SRV.ZHR_I_CLM_REMARKType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:content-version="1"/><EntitySet Name="ZHR_I_CLM_STATUS" EntityType="ZHR_CLAIM_SRV.ZHR_I_CLM_STATUSType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:content-version="1"/><EntitySet Name="ZHR_I_EMP_MATRIX" EntityType="ZHR_CLAIM_SRV.ZHR_I_EMP_MATRIXType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:content-version="1"/>
+				<AssociationSet Name="assoc_7221AA154D628529C233F1F116C9BE6F" Association="ZHR_CLAIM_SRV.assoc_7221AA154D628529C233F1F116C9BE6F"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="ZHR_C_CLAIM" Role="FromRole_assoc_7221AA154D628529C233F1F116C9BE6F"/><End EntitySet="ZHR_I_CLM_REIM_CODE" Role="ToRole_assoc_7221AA154D628529C233F1F116C9BE6F"/></AssociationSet>
+				<AssociationSet Name="assoc_B24970C88A2D7FEF1554AF50089FC722" Association="ZHR_CLAIM_SRV.assoc_B24970C88A2D7FEF1554AF50089FC722"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="ZHR_C_CLAIM" Role="FromRole_assoc_B24970C88A2D7FEF1554AF50089FC722"/><End EntitySet="ZHR_I_CLM_ITEMS" Role="ToRole_assoc_B24970C88A2D7FEF1554AF50089FC722"/></AssociationSet>
+				<AssociationSet Name="assoc_059B2A0A5788ADA155713D6404A9EF1F" Association="ZHR_CLAIM_SRV.assoc_059B2A0A5788ADA155713D6404A9EF1F"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="ZHR_I_CLM_EMP_PERSONNEL" Role="FromRole_assoc_059B2A0A5788ADA155713D6404A9EF1F"/><End EntitySet="ZHR_I_EMP_MATRIX" Role="ToRole_assoc_059B2A0A5788ADA155713D6404A9EF1F"/></AssociationSet>
+				<AssociationSet Name="assoc_89B261BE1EED7E89273A66C3A4A598D8" Association="ZHR_CLAIM_SRV.assoc_89B261BE1EED7E89273A66C3A4A598D8"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="ZHR_C_CLAIM" Role="FromRole_assoc_89B261BE1EED7E89273A66C3A4A598D8"/><End EntitySet="ZHR_I_CLM_REMARK" Role="ToRole_assoc_89B261BE1EED7E89273A66C3A4A598D8"/></AssociationSet>
+				<AssociationSet Name="assoc_5B68AC6FBC546A1C608CE4D71B8EBB22" Association="ZHR_CLAIM_SRV.assoc_5B68AC6FBC546A1C608CE4D71B8EBB22"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="ZHR_I_CLM_ITEMS" Role="FromRole_assoc_5B68AC6FBC546A1C608CE4D71B8EBB22"/><End EntitySet="ZHR_I_CLM_MASTER" Role="ToRole_assoc_5B68AC6FBC546A1C608CE4D71B8EBB22"/></AssociationSet>
+				<AssociationSet Name="assoc_2EDD7243756A70E6526B13C6A1EB8747" Association="ZHR_CLAIM_SRV.assoc_2EDD7243756A70E6526B13C6A1EB8747"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="ZHR_C_CLAIM" Role="FromRole_assoc_2EDD7243756A70E6526B13C6A1EB8747"/><End EntitySet="ZHR_I_CLM_PERSONNEL_MASTER" Role="ToRole_assoc_2EDD7243756A70E6526B13C6A1EB8747"/></AssociationSet>
+				<AssociationSet Name="assoc_72498A79E86473D7662C6979F0CD9B5B" Association="ZHR_CLAIM_SRV.assoc_72498A79E86473D7662C6979F0CD9B5B"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="ZHR_I_CLM_ITEMS" Role="FromRole_assoc_72498A79E86473D7662C6979F0CD9B5B"/><End EntitySet="ZHR_I_CLM_ATTACHMENT" Role="ToRole_assoc_72498A79E86473D7662C6979F0CD9B5B"/></AssociationSet>
+				<AssociationSet Name="assoc_FDF72E962F2A85A023931EFBF52F6AFC" Association="ZHR_CLAIM_SRV.assoc_FDF72E962F2A85A023931EFBF52F6AFC"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="ZHR_C_CLAIM" Role="FromRole_assoc_FDF72E962F2A85A023931EFBF52F6AFC"/><End EntitySet="ZHR_I_CLM_PERSONNEL_MASTER" Role="ToRole_assoc_FDF72E962F2A85A023931EFBF52F6AFC"/></AssociationSet>
+				<AssociationSet Name="assoc_FBACA14139B6F30ACA713DD24C4F04D5" Association="ZHR_CLAIM_SRV.assoc_FBACA14139B6F30ACA713DD24C4F04D5"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="ZHR_C_CLAIM" Role="FromRole_assoc_FBACA14139B6F30ACA713DD24C4F04D5"/><End EntitySet="ZHR_I_CATEGORY_VH" Role="ToRole_assoc_FBACA14139B6F30ACA713DD24C4F04D5"/></AssociationSet>
+				<AssociationSet Name="assoc_AFACDAC7FD724F6597B77A51EB8803C9" Association="ZHR_CLAIM_SRV.assoc_AFACDAC7FD724F6597B77A51EB8803C9"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="ZHR_C_CLAIM" Role="FromRole_assoc_AFACDAC7FD724F6597B77A51EB8803C9"/><End EntitySet="ZHR_I_CLM_PERSONNEL_MASTER" Role="ToRole_assoc_AFACDAC7FD724F6597B77A51EB8803C9"/></AssociationSet>
+				<AssociationSet Name="assoc_B62CE180B72E40056156B2850FAE3B06" Association="ZHR_CLAIM_SRV.assoc_B62CE180B72E40056156B2850FAE3B06"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="ZHR_C_CLAIM" Role="FromRole_assoc_B62CE180B72E40056156B2850FAE3B06"/><End EntitySet="ZHR_I_CLM_STATUS" Role="ToRole_assoc_B62CE180B72E40056156B2850FAE3B06"/></AssociationSet>
+			</EntityContainer>
+			<Annotations Target="ZHR_CLAIM_SRV.ZHR_C_CLAIMType/ClaimId" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Manage Claim"/><PropertyValue Property="CollectionPath" String="ZHR_C_CLAIM"/><PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="ClaimId"/><PropertyValue Property="ValueListProperty" String="ClaimId"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="PersonnelNumber"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="ReimbursementCategory"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="ReimbursementCode"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="NetInvoiceAmount"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Status"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Requester"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="CreationDate"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Maintenance"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="MaxEntitlementAmount"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="CostCenter"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="GrossAmount"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="TotalTaxAmount"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Currency"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="ApprovedAmount"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Status_Text"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="CriticalityType"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="CurrentAgent"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="NextAgent"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="LastApprover"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="CreationUser"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="LastChange"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="FinancialYear"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="NextEligibilityDate"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="ValidationLevel"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="ZHR_CLAIM_SRV.ZHR_C_CLAIMType/ReimbursementCategory" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Value Help for Claim Category"/><PropertyValue Property="CollectionPath" String="ZHR_I_CATEGORY_VH"/><PropertyValue Property="SearchSupported" Bool="false"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="ReimbursementCategory"/><PropertyValue Property="ValueListProperty" String="ReimbursementCategory"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="language"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Description"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="ZHR_CLAIM_SRV.ZHR_C_CLAIMType/ReimbursementCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="HR Claim Reiemburse code Value Help"/><PropertyValue Property="CollectionPath" String="ZHR_I_CLM_REIMCODE_VH"/><PropertyValue Property="SearchSupported" Bool="false"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="ReimbursementCategory"/><PropertyValue Property="ValueListProperty" String="ReimbursementCategory"/></Record>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="ReimbursementCode"/><PropertyValue Property="ValueListProperty" String="ReimbursementCode"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="language"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="ReimCodeDescription"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation><Annotation Term="Common.ValueListWithFixedValues"/></Annotations>
+			<Annotations Target="ZHR_CLAIM_SRV.ZHR_C_CLAIMType/Status" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Claim Status"/><PropertyValue Property="CollectionPath" String="ZHR_I_CLM_STATUS"/><PropertyValue Property="SearchSupported" Bool="false"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="Status"/><PropertyValue Property="ValueListProperty" String="Status"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="language"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Description"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="ZHR_CLAIM_SRV.ZHR_C_CLAIMType/Requester" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Employee Clam Personel Data"/><PropertyValue Property="CollectionPath" String="ZHR_I_CLM_PERSONNEL_MASTER"/><PropertyValue Property="SearchSupported" Bool="false"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="Requester"/><PropertyValue Property="ValueListProperty" String="UserId"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="ZHR_CLAIM_SRV.ZHR_CLAIM_SRV_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm"><Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/></Annotations>
+			<Annotations Target="ZHR_CLAIM_SRV.ZHR_CLAIM_SRV_Entities/ZHR_C_CLAIM" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="Capabilities.FilterRestrictions">
+					<Record>
+						<PropertyValue Property="FilterExpressionRestrictions">
+							<Collection>
+								<Record><PropertyValue Property="Property" PropertyPath="CreationDate"/><PropertyValue Property="AllowedExpressions" String="SingleRange"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="ZHR_CLAIM_SRV.ZHR_CLAIM_SRV_Entities/ZHR_I_CLM_REMARK" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="Capabilities.FilterRestrictions">
+					<Record>
+						<PropertyValue Property="FilterExpressionRestrictions">
+							<Collection>
+								<Record><PropertyValue Property="Property" PropertyPath="Remark"/><PropertyValue Property="AllowedExpressions" String="SearchExpression"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="Capabilities.SortRestrictions">
+					<Record>
+						<PropertyValue Property="NonSortableProperties">
+							<Collection>
+								<PropertyPath>Remark</PropertyPath>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations><atom:link rel="self" href="http://localhost:60941/sap/opu/odata/sap/ZHR_CLAIM_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/><atom:link rel="latest-version" href="http://localhost:60941/sap/opu/odata/sap/ZHR_CLAIM_SRV/$metadata"
+				xmlns:atom="http://www.w3.org/2005/Atom"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

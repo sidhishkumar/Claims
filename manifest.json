@@ -1,0 +1,217 @@
+{
+    "_version": "1.7.0",
+    "sap.app": {
+        "id": "com.pfcindia.apphrmanageclaim",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "sourceTemplate": {
+            "id": "ui5template.basicSAPUI5ApplicationProject",
+            "version": "1.40.12"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZHR_CLAIM_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "annotations": [
+                        "ZHR_CLAIM_ANNO_MDL",
+                        "localAnnotations"
+                    ],
+                    "localUri": "localService/metadata.xml"
+                }
+            },
+            "ZHR_CLAIM_ANNO_MDL": {
+                "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZHR_CLAIM_ANNO_MDL',Version='0001')/$value/",
+                "type": "ODataAnnotation",
+                "settings": {}
+            },
+            "undertaking": {
+                "uri": "model/undertaking.json",
+                "type": "JSONModel"
+            },
+            "config": {
+                "uri": "model/config.json",
+                "type": "JSONModel"
+            },
+            "localAnnotations": {
+                "uri": "annotations/annotations.xml",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "annotations/annotations.xml"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        },
+        "supportedThemes": [
+            "sap_hcb",
+            "sap_belize"
+        ]
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "com.pfcindia.apphrmanageclaim.view.App",
+            "type": "XML"
+        },
+        "dependencies": {
+            "minUI5Version": "1.30.0",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {},
+                "sap.ui.layout": {},
+                "sap.ushell": {},
+                "sap.collaboration": {},
+                "sap.ui.comp": {},
+                "sap.uxap": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "com.pfcindia.apphrmanageclaim.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false
+                }
+            },
+            "undertaking": {
+                "dataSource": "undertaking",
+                "type": "sap.ui.model.json.JSONModel",
+                "settings": {
+                    "defaultBindingMode": "OneWay"
+                }
+            },
+            "config": {
+                "dataSource": "config",
+                "type": "sap.ui.model.json.JSONModel",
+                "settings": {
+                    "defaultBindingMode": "OneWay"
+                }
+            },
+            "@i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            }
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "com.pfcindia.apphrmanageclaim.view",
+                "controlId": "com.pfcindia.apphrmanageclaim.view.App.app",
+                "controlAggregation": "pages",
+                "transition": "show",
+                "async": true
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "list",
+                    "target": [
+                        "list"
+                    ]
+                },
+                {
+                    "pattern": "new/{category}/{code}",
+                    "name": "new",
+                    "target": [
+                        "new"
+                    ]
+                },
+                {
+                    "pattern": "edit/{claimid}",
+                    "name": "edit",
+                    "target": [
+                        "new"
+                    ]
+                },
+                {
+                    "pattern": "new/item/",
+                    "name": "newitem",
+                    "target": [
+                        "newitem"
+                    ]
+                },
+                {
+                    "pattern": "edit/{claimid}/item/{item}",
+                    "name": "edititem",
+                    "target": [
+                        "newitem"
+                    ]
+                },
+                {
+                    "pattern": "display/{claimid}",
+                    "name": "display",
+                    "target": [
+                        "display"
+                    ]
+                },
+                {
+                    "pattern": "display/{claimid}/item/{item}",
+                    "name": "displayitem",
+                    "target": [
+                        "displayitem"
+                    ]
+                }
+            ],
+            "targets": {
+                "list": {
+                    "viewName": "List"
+                },
+                "new": {
+                    "viewName": "Create"
+                },
+                "newitem": {
+                    "viewName": "Invoice"
+                },
+                "display": {
+                    "viewName": "DisplayClaim"
+                },
+                "displayitem": {
+                    "viewName": "DisplayItem"
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/zhr_manageclaim",
+        "_version": "1.1.0"
+    }
+}

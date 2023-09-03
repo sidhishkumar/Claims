@@ -1,0 +1,26 @@
+{
+	"config": [{
+		"category": "ITE",
+		"code": "9N06",
+		"visible": [
+			"Head",
+			"SupplierGSTStatus",
+			"SupplierName",
+			"SupplierGstin",
+			"MakeModel",
+			"SerialNumber",
+			"HsnCode",
+			"InvoiceDate",
+			"PfcGstinType",
+			"Cgst",
+			"Igst",
+			"InvoiceAmount",
+			"InvoiceNumber",
+			"GstRate",
+			"Sgst",
+			"TotalAmount",
+			"Location",
+			"PfcGstinType"
+		]
+	}]
+}

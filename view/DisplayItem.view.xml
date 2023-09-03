@@ -1,0 +1,139 @@
+<mvc:View xmlns="sap.uxap" xmlns:mvc="sap.ui.core.mvc" xmlns:m="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" xmlns:upload="sap.m.upload" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns:smartForm="sap.ui.comp.smartform" xmlns:smartField="sap.ui.comp.smartfield"
+	controllerName="com.pfcindia.apphrmanageclaim.controller.DisplayItem" xmlns:html="http://www.w3.org/1999/xhtml">
+	<ObjectPageLayout id="com.pfcindia.apphrmanageclaim.view.fragment.DisplayItem.objectPageLayout" showTitleInHeaderContent="true"
+		showEditHeaderButton="false" upperCaseAnchorBar="false" alwaysShowContentHeader="true" headerContentPinned="false" showFooter="true">
+		<headerTitle>
+			<ObjectPageDynamicHeaderTitle>
+				<expandedHeading>
+					<m:Title text="Invoice # {InvoiceNumber}"/>
+				</expandedHeading>
+				<snappedHeading>
+					<m:Title text="Invoice # {InvoiceNumber}"/>
+				</snappedHeading>
+				<expandedContent>
+					<m:Text text="Item # {Item}"/>
+				</expandedContent>
+				<snappedContent>
+					<m:Text text="Item # {Item}"/>
+				</snappedContent>
+			</ObjectPageDynamicHeaderTitle>
+		</headerTitle>
+		<sections>
+			<ObjectPageSection titleUppercase="false" title="Asset Details">
+				<subSections>
+					<ObjectPageSubSection>
+						<smartForm:SmartForm id="com.pfcindia.apphrmanageclaim.view.DisplayItem.ObjectPage.AssetForm" editable="true">
+							<smartForm:layout>
+								<smartForm:ColumnLayout columnsM="2" columnsL="2" columnsXL="2"/>
+							</smartForm:layout>
+							<smartForm:Group>
+								<smartForm:GroupElement>
+									<smartField:SmartField value="{Location}"/>
+								</smartForm:GroupElement>
+								<smartForm:GroupElement>
+									<smartField:SmartField value="{MakeModel}"/>
+								</smartForm:GroupElement>
+							</smartForm:Group>
+							<smartForm:Group>
+								<smartForm:GroupElement>
+									<smartField:SmartField value="{SerialNumber}"/>
+								</smartForm:GroupElement>
+								<smartForm:GroupElement>
+									<smartField:SmartField value="{HsnCode}"/>
+								</smartForm:GroupElement>
+							</smartForm:Group>
+						</smartForm:SmartForm>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection titleUppercase="false" title="Supplier Information">
+				<subSections>
+					<ObjectPageSubSection titleUppercase="false">
+						<smartForm:SmartForm id="com.pfcindia.apphrmanageclaim.view.DisplayItem.ObjectPage.SupplierForm" editable="false">
+							<smartForm:layout>
+								<smartForm:ColumnLayout columnsM="2" columnsL="2" columnsXL="2"/>
+							</smartForm:layout>
+							<smartForm:Group>
+								<smartForm:GroupElement>
+									<smartField:SmartField value="{Head}"/>
+								</smartForm:GroupElement>
+								<smartForm:GroupElement>
+									<smartField:SmartField value="{SupplierGSTStatus}"/>
+								</smartForm:GroupElement>
+							</smartForm:Group>
+							<smartForm:Group>
+								<smartForm:GroupElement>
+									<smartField:SmartField value="{SupplierName}"/>
+								</smartForm:GroupElement>
+								<smartForm:GroupElement>
+									<smartField:SmartField value="{SupplierGstin}"/>
+								</smartForm:GroupElement>
+							</smartForm:Group>
+						</smartForm:SmartForm>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection titleUppercase="false" title="Invoice Details">
+				<subSections>
+					<ObjectPageSubSection>
+						<smartForm:SmartForm id="com.pfcindia.apphrmanageclaim.view.DisplayItem.ObjectPage.InvoiceForm" editable="false">
+							<smartForm:layout>
+								<smartForm:ColumnLayout columnsM="2" columnsL="2" columnsXL="2"/>
+							</smartForm:layout>
+							<smartForm:Group>
+								<smartForm:GroupElement>
+									<smartField:SmartField value="{InvoiceDate}"/>
+								</smartForm:GroupElement>
+								<smartForm:GroupElement>
+									<smartField:SmartField value="{InvoiceNumber}"/>
+								</smartForm:GroupElement>
+								<smartForm:GroupElement>
+									<smartField:SmartField value="{PfcGstinType}"/>
+								</smartForm:GroupElement>
+								<smartForm:GroupElement>
+									<smartField:SmartField value="{TaxCode}"/>
+								</smartForm:GroupElement>
+							</smartForm:Group>
+							<smartForm:Group>
+								<smartForm:GroupElement>
+									<smartField:SmartField value="{InvoiceAmount}"/>
+								</smartForm:GroupElement>
+								<smartForm:GroupElement>
+									<smartField:SmartField value="{Cgst}"/>
+								</smartForm:GroupElement>
+								<smartForm:GroupElement>
+									<smartField:SmartField value="{Sgst}"/>
+								</smartForm:GroupElement>
+								<smartForm:GroupElement>
+									<smartField:SmartField value="{Igst}"/>
+								</smartForm:GroupElement>
+								<smartForm:GroupElement>
+									<smartField:SmartField value="{TotalAmount}"/>
+								</smartForm:GroupElement>
+							</smartForm:Group>
+						</smartForm:SmartForm>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection titleUppercase="false" title="Attachment">
+				<subSections>
+					<ObjectPageSubSection>
+						<upload:UploadSet showIcons="true" uploadEnabled="false" fileTypes="txt,doc,png" mediaTypes="text/plain,application/msword,image/png"
+							items="{path: 'to_ClaimAttachment', templateShareable: false}">
+							<upload:items>
+								<upload:UploadSetItem fileName="{AttachmentName}" mediaType="{Mimetype}" url="{Url}" visibleEdit="false" visibleRemove="false">
+									<upload:attributes>
+										<m:ObjectAttribute title="Uploaded On" text="{path:'CredationDate',type:'sap.ui.model.type.Date'}" active="false"/>
+										<m:ObjectAttribute text="{path:'CreationTime', formatter: '.formatter.formatTime'}" active="false"/>
+									</upload:attributes>
+								</upload:UploadSetItem>
+							</upload:items>
+						</upload:UploadSet>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+		</sections>
+	</ObjectPageLayout>
+</mvc:View>

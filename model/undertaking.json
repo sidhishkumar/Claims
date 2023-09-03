@@ -1,0 +1,56 @@
+{
+	"ITE-9N07": {
+		"headerLine": {
+			"hi": "मैं यह वचन देता हूं कि",
+			"en": "I undertake that"
+		},
+		"sublines": [{
+			"no": 1,
+			"hi": "मैं इस बात की पुष्टि करता हूं कि मैंने परिसंपत्तियों की खरीद के लिए एचआर द्वारा जारी किए गए सामान्य दिशानिर्देशों में निहित नियमों और शर्तों को पढ़ लिया है जहां संपत्ति की लागत पीएफसी द्वारा प्रतिपूर्ति की जाती है।",
+			"en": "I confirm that I have read the terms andcondition as contained in the common guidelines issued by HR for purchase of above assets where the cost of assets are reimbursed by PFC."
+		}, {
+			"no": 2,
+			"hi": "मैं संपत्ति (एसेट) का इस्तेमाल केवल सरकारी प्रयोजन के लिए करूंगा।",
+			"en": "I shall use asset for official purpose only."
+		}, {
+			"no": 3,
+			"hi": "मुझे जारी की गई उपरोक्त संपत्ति के अनुरक्षण/इंश्योरेंस की ज़िम्मेदारी मेरी है और इस संबंध में  प्रतिपूर्ति नहीं की जाएगी।",
+			"en": "I shall be responsible for maintenance/insurance of above assets being issued to me and for which the reimbursementshall not be made."
+		}, {
+			"no": 4,
+			"hi": "मैं इन दिशानिर्देशों के तहत वर्णित समय-सीमा की समाप्ती से पूर्व पीएफसी की सेवाओं से त्याग-पत्र देने ने की स्थिति मैं पीएफसी को डबल्यूडीवी राशि के बायबैक की वसूली के लिए प्राधिकृत करता /करती हूँ।",
+			"en": "I authorize PFC to recover buy back amount of WDV, incase of resignation from the services of PFC before the expire of life span mentioned under these guidelines."
+		}]
+	},
+	"ITE-9N06": {
+		"headerLine": {
+			"hi": "मैं यह वचन देता हूं कि",
+			"en": "I undertake that"
+		},
+		"sublines": [{
+			"no": 1,
+			"hi": "मेरे द्वारा खरीरदा गया लैपटॉप, लैपटॉप की खरीद के लिए यथा अधिसूचित विनिर्देशों के समतुल्य/उनसे उच्चतर विनिर्देश वाला है",
+			"en": "The laptop purchased by me is equal to/ higher than the specification as notified for the purchase of laptop."
+		}, {
+			"no": 2,
+			"hi": "मैं लैपटॉप का इस्तेमाल सरकारी प्रयोजन के लिए करूंगा लिए करूंगा।",
+			"en": "I shall use the laptop for the official purpose."
+		}, {
+			"no": 3,
+			"hi": "मैं लैपटॉप को अच्च्छी स्थिति में रखूंगा और इसकी की सुरक्षा, चोरी और क्षति के लिए जवाबदेह रहूंगां  प्रतिपूर्ति नहीं की जाएगी।",
+			"en": "I shall keep the Laptop in good condition and shall be responsible for safety, theft damage of the Laptop."
+		}, {
+			"no": 4,
+			"hi": "मैं, किसी भी चोरी , क्षति आदि के मामले में पीएफसी को मेरे वेतन/ ग्रैच्च्यूटी , छुट्टी संराशिकरण, कल्याण निधि आदि सहित अन्य देयताओं से प्रो रेटा आधार पर लैपटॉप के मूल्य की वसूली करने ने के लिए प्राधिकृत करता हूं।",
+			"en": "I authorize PFC to recover written down value of Laptop on pro-data basis from my salary/dues including gratuity, leave encashment benevolent fund etc., incase of any theft/damage etc."
+		},{
+			"no": 5,
+			"hi": "इसके अलावा मैं पीएफसी को मुझे देय किसीभी भुगतान से पूर्व में लिए गए लैपटॉप की डब्ब्ल्यूडीवी वसूल करने के लिए भी प्राधिकृत करता हूं।" ,
+			"en": "Further, I authorize PFC to recover the WDV of earlier laptop out of the payment due to me."
+		},{
+			"no": 6,
+			"hi": "लैपटॉप खरीदने के लिए अन्य सामान्य दिशानिर्देश लागू होंगे।" ,
+			"en": "The other common guidelines shall be applicable for purchasing the laptop."
+		}]	
+	}
+}

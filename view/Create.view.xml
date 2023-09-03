@@ -1,0 +1,189 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:m="sap.m" xmlns:f="sap.f" xmlns="sap.uxap"
+	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:commons="sap.suite.ui.commons"
+	xmlns:form="sap.ui.layout.form" controllerName="com.pfcindia.apphrmanageclaim.controller.Create" xmlns:layout="sap.ui.layout"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<ObjectPageLayout showTitleInHeaderContent="true" showEditHeaderButton="true" editHeaderButtonPress="handleEditBtnPress"
+		upperCaseAnchorBar="false" alwaysShowContentHeader="true" headerContentPinned="false" showFooter="true">
+		<headerTitle>
+			<ObjectPageDynamicHeaderTitle>
+				<expandedHeading>
+					<m:HBox>
+						<m:Title text="{= ${Claimid} ? 'Claim # ' + ${Claimid} : 'New Claim' }" wrapping="true"/>
+					</m:HBox>
+				</expandedHeading>
+				<snappedHeading>
+					<m:FlexBox fitContainer="true" alignItems="Center">
+						<m:Title text="{= ${Claimid} ? 'Claim # ' + ${Claimid} : 'New Claim' }" wrapping="true"/>
+					</m:FlexBox>
+				</snappedHeading>
+				<expandedContent>
+					<m:Text text="Creation Date: {path: 'Erdat', type: 'sap.ui.model.type.Date'}"/>
+				</expandedContent>
+				<snappedContent>
+					<m:Text text="Creation Date: {path: 'Erdat', type: 'sap.ui.model.type.Date'}"/>
+				</snappedContent>
+			</ObjectPageDynamicHeaderTitle>
+		</headerTitle>
+		<headerContent>
+			<m:FlexBox wrap="Wrap" justifyContent="SpaceBetween">
+				<m:HBox>
+					<m:VBox class="sapUiSmallMarginEnd">
+						<m:Text text="Personnel Name:"/>
+						<m:Text text="Personnel Number:"/>
+						<m:Text text="Department:"/>
+						<m:Text text="Financial Year:"/>
+					</m:VBox>
+					<m:VBox>
+						<m:Text text="{personnel>/EmployeeName}"/>
+						<m:Text text="{Pernr}"/>
+						<m:Text text="{personnel>/OrgUnitDescription}"/>
+						<m:Text text="{personnel>/FiscalYear}-{= parseInt(${personnel>/FiscalYear}) + 1}"/>
+					</m:VBox>
+				</m:HBox>
+				<m:HBox>
+					<m:VBox class="sapUiSmallMarginEnd">
+						<m:Text text="Application Type:"/>
+						<m:Text text="Status:"/>
+					</m:VBox>
+					<m:VBox>
+						<m:Text text="{appModel>/remcText}"/>
+						<m:Text text="{personnel>/Status}"/>
+					</m:VBox>
+				</m:HBox>
+				<m:HBox>
+					<m:VBox class="sapUiSmallMarginEnd">
+						<m:Text text="Eligibility Amount:"/>
+						<m:Text text="Total Amount:"/>
+						<m:Text text="Next Eligible Date:"/>
+					</m:VBox>
+					<m:VBox>
+						<m:Text text="₹ {personnel>/eligibility/MaxEntitlementAmount}"/>
+						<m:Text text="₹ {appModel>/netInvoiceAmount}"/>
+						<m:Text text="{path: 'personnel>/eligibility/NextEligibilityDate', type: 'sap.ui.model.type.Date'}"/>
+					</m:VBox>
+				</m:HBox>
+			</m:FlexBox>
+		</headerContent>
+		<sections>
+			<ObjectPageSection titleUppercase="false" title="Approval Status" visible="{appModel>/showApprovalHistory}">
+				<subSections>
+					<ObjectPageSubSection titleUppercase="false" title="Approval Status">
+						<m:VBox>
+							<smartTable:SmartTable entitySet="UserRemarkSet" tableType="ResponsiveTable" header="History" showRowCount="true" enableAutoBinding="true"
+								demandPopin="true" tableBindingPath="to_remarks" showTablePersonalisation="false" useExportToExcel="false">
+								<!--layout data used to make the table growing but the filter bar fixed -->
+								<smartTable:layoutData>
+									<m:FlexItemData growFactor="1" baseSize="0%"/>
+								</smartTable:layoutData>
+								<m:Table updateFinished="onApprovalTableUpdateFinished">
+									<m:columns>
+										<m:Column hAlign="End">
+											<m:customData>
+												<core:CustomData key="p13nData" value='\{"columnKey": "Credate", "leadingProperty": "Uname", "columnIndex": 2}'/>
+											</m:customData>
+											<m:Text text="Creation Date"/>
+										</m:Column>
+									</m:columns>
+									<m:items>
+										<m:ColumnListItem>
+											<m:Text text="{path: 'Credate', type:'sap.ui.model.type.Date'}"/>
+										</m:ColumnListItem>
+									</m:items>
+								</m:Table>
+							</smartTable:SmartTable>
+						</m:VBox>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection titleUppercase="false" title="Invoice Details">
+				<subSections>
+					<ObjectPageSubSection titleUppercase="false" title="Invoice Details">
+						<smartTable:SmartTable entitySet="ClaimItemsSet" tableType="ResponsiveTable" header="Invoices" showRowCount="true" enableAutoBinding="true"
+							demandPopin="true" showTablePersonalisation="false" useExportToExcel="false" requestAtLeastFields="Item"
+							initiallyVisibleFields="Item,Xblnr,Bldat,Invoiceamt" tableBindingPath="HeaderToItems">
+							<!-- layout data used to make the table growing but the filter bar fixed -->
+							<smartTable:layoutData>
+								<m:FlexItemData growFactor="1" baseSize="0%"/>
+							</smartTable:layoutData>
+							<smartTable:customToolbar>
+								<m:OverflowToolbar design="Transparent">
+									<m:ToolbarSpacer/>
+									<m:Button icon="sap-icon://add" text="New Invoice" press="onNewInvoice" type="Emphasized"/>
+								</m:OverflowToolbar>
+							</smartTable:customToolbar>
+							<m:Table updateFinished="onTableUpdateFinished">
+								<m:columns>
+									<m:Column hAlign="End">
+										<m:customData>
+											<core:CustomData key="p13nData" value='\{"columnKey": "Actions", "leadingProperty": "Invoiceamt", "columnIndex": 5}'/>
+										</m:customData>
+										<m:Text text="Actions"/>
+									</m:Column>
+								</m:columns>
+								<m:items>
+									<m:ColumnListItem>
+										<m:FlexBox alignItems="Center" justifyContent="End" app:Claimid="{Claimid}" app:Item="{Item}">
+											<!--<m:Button icon="sap-icon://vds-file" tooltip="Preview Attachment" press="onAttachmentPreview" class="sapUiTinyMarginEnd"/>-->
+											<m:Button icon="sap-icon://edit" tooltip="Edit" press="onEditInvoice" class="sapUiTinyMarginEnd"/>
+											<m:Button icon="sap-icon://delete" tooltip="Delete" press="onDeleteInvoice" class="sapUiTinyMarginEnd"/>
+										</m:FlexBox>
+									</m:ColumnListItem>
+								</m:items>
+							</m:Table>
+						</smartTable:SmartTable>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection titleUppercase="false" title="Undertaking">
+				<subSections>
+					<ObjectPageSubSection titleUppercase="false" title="Undertaking">
+						<m:VBox>
+							<m:CheckBox text="{note>/headerLine/hi} / {note>/headerLine/en}" selected="{appModel>/termAcceptanceFlag}" valueState="Information"/>
+							<m:VBox items="{note>/sublines/}">
+								<m:HBox>
+									<m:Text text="{note>no}" class="sapUiSmallMarginBeginEnd"/>
+									<m:VBox>
+										<m:Text text="{note>hi}"/>
+										<m:Text text="{note>en}"/>
+									</m:VBox>
+								</m:HBox>
+							</m:VBox>
+							<m:FlexBox justifyContent="SpaceBetween">
+								<m:Text/>
+								<form:SimpleForm editable="false" layout="ResponsiveGridLayout" labelSpanL="3" labelSpanM="3" labelSpanS="6" adjustLabelSpan="true"
+									emptySpanXL="0" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false">
+									<form:toolbar>
+										<m:Toolbar>
+											<m:Text text="{i18n>signature}"/>
+										</m:Toolbar>
+									</form:toolbar>
+									<form:content>
+										<m:Label text="{i18n>name}"/>
+										<m:Text text="{personnel>/EmployeeName}"/>
+										<m:Label text="{i18n>designation}"/>
+										<m:Text text="{personnel>/DesignationText}"/>
+										<m:Label text="{i18n>empno}"/>
+										<m:Text text="{Pernr}"/>
+										<m:Label text="{i18n>department}"/>
+										<m:Text text="{personnel>/OrgUnitDescription}"/>
+										<m:Label text="{i18n>date}"/>
+										<m:Text text="{path: 'Erdat', type:'sap.ui.model.type.Date'}"/>
+									</form:content>
+								</form:SimpleForm>
+							</m:FlexBox>
+						</m:VBox>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+		</sections>
+		<footer>
+			<m:OverflowToolbar>
+				<!--<m:Button id="com.pfcindia.apphrmanageclaim.view.Create.messageButton" icon="sap-icon://alert" text="{= ${message>/}.length }"-->
+				<!--	visible="{= ${message>/}.length > 0 }" type="Emphasized" press="onMessagePopover"/>-->
+				<m:ToolbarSpacer/>
+				<m:Button tooltip="Submit" text="Submit" class="sapUiTinyMarginEnd" press="onSubmit" type="Emphasized" visible="{appModel>/showSubmit}"/>
+				<m:Button tooltip="Cancel" text="Cancel" class="sapUiTinyMarginEnd" type="Transparent" press="onCancel"/>
+			</m:OverflowToolbar>
+		</footer>
+	</ObjectPageLayout>
+</mvc:View>

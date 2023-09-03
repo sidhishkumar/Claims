@@ -1,0 +1,111 @@
+{
+    "resources": [
+        {
+            "name": "util/Claim.js"
+        },
+        {
+            "name": "util/type/InvoiceAmount.js"
+        },
+        {
+            "name": "util/type/SupplierName.js"
+        },
+        {
+            "name": "util/type/InvoiceDate.js"
+        },
+        {
+            "name": "util/type/SupplierGSTIN.js"
+        },
+        {
+            "name": "model/formatter.js"
+        },
+        {
+            "name": "model/undertaking.json"
+        },
+        {
+            "name": "model/models.js"
+        },
+        {
+            "name": "model/config.json"
+        },
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": "css/style.css"
+        },
+        {
+            "name": "controller/Invoice.controller.js"
+        },
+        {
+            "name": "controller/DisplayItem.controller.js"
+        },
+        {
+            "name": "controller/BaseController.js"
+        },
+        {
+            "name": "controller/DisplayClaim.controller.js"
+        },
+        {
+            "name": "controller/List.controller.js"
+        },
+        {
+            "name": "controller/Create.controller.js"
+        },
+        {
+            "name": "controller/App.controller.js"
+        },
+        {
+            "name": "annotations/annotations.xml"
+        },
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "index.html"
+        },
+        {
+            "name": "localService/metadata.xml"
+        },
+        {
+            "name": "view/Create.view.xml"
+        },
+        {
+            "name": "view/App.view.xml"
+        },
+        {
+            "name": "view/DisplayClaim.view.xml"
+        },
+        {
+            "name": "view/List.view.xml"
+        },
+        {
+            "name": "view/DisplayItem.view.xml"
+        },
+        {
+            "name": "view/fragment/CategorySelectDialog.fragment.xml"
+        },
+        {
+            "name": "view/fragment/HeaderTitle.fragment.xml"
+        },
+        {
+            "name": "view/fragment/MessagePopover.fragment.xml"
+        },
+        {
+            "name": "view/fragment/HeaderContent.fragment.xml"
+        },
+        {
+            "name": "view/Invoice.view.xml"
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "neo-app.json"
+        }
+    ]
+}

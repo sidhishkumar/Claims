@@ -1,0 +1,40 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.f"
+	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:commons="sap.suite.ui.commons"
+	controllerName="com.pfcindia.apphrmanageclaim.controller.List" xmlns:html="http://www.w3.org/1999/xhtml">
+	<f:DynamicPage headerPinned="true">
+		<f:header>
+			<f:DynamicPageHeader pinnable="true">
+				<smartFilterBar:SmartFilterBar id="com.pfcindia.apphrmanageclaim.view.List.DynamicPage.smartFilterBar" entitySet="ZHR_C_CLAIM"
+					useToolbar="false" showFilterConfiguration="false" basicSearchFieldName="ClaimId" enableBasicSearch="true">
+					<!-- layout data used to make the table growing but the filter bar fixed -->
+					<smartFilterBar:layoutData>
+						<FlexItemData shrinkFactor="0"/>
+					</smartFilterBar:layoutData>
+					<smartFilterBar:controlConfiguration>
+						<smartFilterBar:ControlConfiguration key="CreationDate" label="Period"/>
+					</smartFilterBar:controlConfiguration>
+				</smartFilterBar:SmartFilterBar>
+			</f:DynamicPageHeader>
+		</f:header>
+		<f:content>
+			<smartTable:SmartTable id="com.pfcindia.apphrmanageclaim.view.List.DynamicPage.smartTable" entitySet="ZHR_C_CLAIM"
+				smartFilterId="com.pfcindia.apphrmanageclaim.view.List.DynamicPage.smartFilterBar" tableType="ResponsiveTable" header="Claim History"
+				showRowCount="true" enableAutoBinding="true" class="sapUiResponsiveContentPadding" demandPopin="true"
+				beforeRebindTable="onBeforeRebindClaimTable" showTablePersonalisation="false" useExportToExcel="false">
+				<!-- layout data used to make the table growing but the filter bar fixed -->
+				<smartTable:layoutData>
+					<FlexItemData growFactor="1" baseSize="0%"/>
+				</smartTable:layoutData>
+				<smartTable:customToolbar>
+					<OverflowToolbar design="Transparent">
+						<ToolbarSpacer/>
+						<Button icon="sap-icon://add" text="Add New" press="onAddNew" type="Emphasized"/>
+					</OverflowToolbar>
+				</smartTable:customToolbar>
+				<Table updateFinished="onTableUpdateFinished" sticky="ColumnHeaders">
+					<ColumnListItem type="Navigation" press="onRowSelection"></ColumnListItem>
+				</Table>
+			</smartTable:SmartTable>
+		</f:content>
+	</f:DynamicPage>
+</mvc:View>
